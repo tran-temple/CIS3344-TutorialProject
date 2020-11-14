@@ -1,0 +1,32 @@
+body {
+    background-color: lightcyan;
+    margin: 0.5em;
+    min-height: 650px;
+    min-width: 850px;
+}
+
+.mainContent {  /* Added padding top and bottom to prevent top/bottom content from getting hidden under titleNav/footer */ 
+    padding:14px;
+    padding-top: 80px; /* prevent the top of the content from getting hidden under the fixed titleNav */
+    padding-bottom: 60px; /* prevent the the bottom of the content from getting hidden under the fixed footer */   
+}
+
+.clear-both {
+   clear: both;
+}
+
+.videoDiv_1 { 
+    position: relative;
+}
+
+.videoDiv_2 {
+    left: 50%;
+}
+
+.videoBlock {
+    position: absolute;
+    width: 48%;  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

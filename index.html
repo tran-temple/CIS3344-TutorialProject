@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<!--
+Name: Hong Tran
+Describe the component VideoLightbox of Tutorial
+-->
+<html>
+    <head>
+        <title>Tutorial</title>
+
+        <!-- Link to an External Style Sheet -->
+        <link href="../style/commonStyle.css" rel="stylesheet" type="text/css" />
+        <link href="../style/myStyle.css" rel="stylesheet" type="text/css" />         
+
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <style>
+            pre {
+                margin-bottom:12px;
+                margin-right: 16px;
+                margin-left: 20px;
+                background-color: #EEEEEE;
+                border-radius: 4px;
+                box-shadow: 2px 2px #AAAAAA;
+                padding-top: 4px;
+                padding-bottom: 4px;
+                font-size: 12px;
+                min-width: 600px;
+            }
+
+            .highlight {
+                background-color:rgba(255, 255, 0, 0.3);
+                font-weight: bold;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div id="titleNav">
+
+            <div id="pageTitle">
+                The VideoLightBox Tutorial
+            </div>            
+
+        </div> <!-- end of  titleNav -->
+
+        <div id="content">
+            <p style="background-color: yellow;">The HTML coders use this component when they would like to show a component that has a background video behind a lightbox</p>
+            <p><strong>The “w3schools.com” site with “How To” page shows steps clearly to use two effects:</strong></p>
+            <p style="text-indent: 30px;"><a target="_blank" href="https://www.w3schools.com/howto/howto_css_fullscreen_video.asp">Click this link to see how to do with the video</a></p>
+            <p style="text-indent: 30px;"><a target="_blank" href="https://www.w3schools.com/howto/howto_js_lightbox.asp">Click this link to see how to do with the lightbox</a></p>
+
+            <p><strong>After you explored above effects, please follow the below instruction and explanation to understand how to use this component!</strong></p>
+
+            <p style="text-indent: 30px;"><strong>Step 1: </strong><a target="_blank" href="poc.html">Click this link to see a page with two VideoLightbox.</a> 
+                This is the version with hard-code from w3schools when you do the right click to view page source.</p>
+            <p style="text-indent: 30px;"><strong>Step 2: </strong>In order to use this component, <a target="_blank" href="download.zip">please click here to download the zip file.</a> 
+                The zip file will provide the demo.html, the MakeVideoLightBox.js, the videoLightbox.css and data files.</p>
+            <p style="text-indent: 30px;"><a target="_blank" href="download/demo.html">Click this link to see the page using two components.</a> 
+                This is the version which turned “proof of concept” code into a well designed reusable component.
+            </p>
+
+            <p style="text-indent: 30px;"><strong>Step 3: </strong>This is the functionality of the VideoLightBox:</p>
+            <div style="text-indent: 30px;">
+                <ul>
+                    <p>HTML Coders will provide a parameter object including id of the element that contains the displayed video and images, 
+                        data of video and images when they call the function to create the component. The data of images should be stored in the JSON file.</p>                    
+
+                    <pre>
+var video1 = MakeVideoLightBox({
+        id: "VideoLightBox_1",
+        jsonFile: "JSON/imageSet01.json",
+        videoFile: "https://www.w3schools.com/howto/rain.mp4",
+        videoType: "video/mp4",
+        videoTitle: "The Rainy Day!!!",
+        modalIntro: "Explore the lanscape: nature, snow and moutain.........."
+    });
+                    </pre>
+
+                    <p>Example of the images JSON file</p>
+                    <pre>
+[
+        {
+            "ImageSmall": "https://www.w3schools.com/howto/img_nature.jpg",
+            "ImageWide": "https://www.w3schools.com/howto/img_nature_wide.jpg",
+            "Alt": "Nature and sunrise"
+        },
+        {
+            "ImageSmall": "https://www.w3schools.com/howto/img_snow.jpg",
+            "ImageWide": "https://www.w3schools.com/howto/img_snow_wide.jpg",
+            "Alt": "Snow"
+        },
+        {
+            "ImageSmall": "https://www.w3schools.com/howto/img_mountains.jpg",
+            "ImageWide": "https://www.w3schools.com/howto/img_mountains_wide.jpg",
+            "Alt": "Mountains and fjords"
+        }  
+    ]
+                    </pre>
+
+                    <p><span class="highlight">The function to create the component will proceed the following sections:</span></p>
+                    <li>Reading data of video: URL, title, type of video and introduction for the modal image gallery</li>
+
+                    <pre>
+// Define variables from the params object
+    var videoContainer = document.getElementById(params.id);
+    var videoURL = params.videoFile;
+    var videoType = params.videoType;
+    var titleVideo = params.videoTitle;
+    var introModal = params.modalIntro;
+    var jsonURL = params.jsonFile;
+                    </pre>
+
+                    <li>Reading data of images from the data JSON file: URLs and caption of each image</li>
+                    <pre>
+// invoke ajax function to read json and if the call was successful, 
+    // run function processJSON, otherwise, put an error message in the DOM element 
+    // that has id get from params object.
+    ajax(jsonURL, processData, videoContainer);
+                    </pre>                                        
+
+                    <li>Generating HTML to show video and images (a background video behind a lightbox)</li>
+                    <pre>
+// Create a video element and add video
+    var video = document.createElement("video");
+    video.className = "myVideo";
+    video.src = videoURL;
+    video.type = videoType;
+    video.autoplay = "autoplay";
+    video.muted = "muted";
+    video.loop = "loop";
+    videoContainer.appendChild(video);
+
+    // Create the VideoMessage div and append message for video, 
+    // message for Modal Image Gallery, the image set and the modal image gallery
+    var mainContent = document.createElement("div");
+    mainContent.className = "videolightbox";
+
+    // Generate title for video
+    var headingVideo = document.createElement("h3");
+    headingVideo.innerHTML = titleVideo;
+    mainContent.appendChild(headingVideo);
+    
+    // generate the button to play / pause video
+    var btnVideo = document.createElement("button");
+    btnVideo.className = "buttonVideo";
+    btnVideo.innerHTML = "Pause";
+    // click on the Video button to play/pause
+    btnVideo.onclick = function () {
+        if (video.paused) {
+            video.play();
+            btnVideo.innerHTML = "Pause";
+        } else {
+            video.pause();
+            btnVideo.innerHTML = "Play";
+        }
+    };
+    mainContent.appendChild(btnVideo);
+
+    // Generate introduction for modal
+    var messageModal = document.createElement("div");
+    messageModal.className = "modalMessage";
+    var pIntro = document.createElement("p");
+    pIntro.innerHTML = introModal;
+    messageModal.appendChild(pIntro);
+
+    mainContent.appendChild(messageModal);
+                    </pre>
+                    <pre>
+// Generate the set of image
+    var imageSetContainer = document.createElement("div");
+    imageSetContainer.className = "imageSet";
+
+    // Generate the Modal Image Gallery
+    var modalContainer = document.createElement("div");
+    modalContainer.className = "modal";
+
+    // Generate detailed HTML for the image set
+    for (var i = 0; i < list.length; i++) {
+        var imageDiv = document.createElement("div");
+        imageDiv.className = "column";
+        var imageSmall = document.createElement("img");
+        imageSmall.src = list[i].ImageSmall;
+        imageSmall.alt = list[i].Alt;
+        imageSmall.className = "hover-shadow cursor";
+        imageSmall.setAttribute("data-index", i + 1);
+        // click on the image on the background to open modal
+        imageSmall.onclick = function () {
+            openModal(modalContainer);
+            currentSlide(modalContainer, this.getAttribute('data-index'));
+        };
+
+        imageDiv.appendChild(imageSmall);
+        imageSetContainer.appendChild(imageDiv);
+    }                        
+                    </pre>
+                    <li>Event handling: open / close the modal image gallery, play / pause video, navigate images when the modal image gallery is opened</li>
+                    <pre>
+// click on the image on the background to open modal
+    imageSmall.onclick = function () {
+        openModal(modalContainer);
+        currentSlide(modalContainer, this.getAttribute('data-index'));
+    };
+
+    // generate close modal
+    close.onclick = function () {
+        closeModal(modalContainer);
+    };
+
+    // click on the Video button to play/pause                 
+    btnVideo.onclick = function () {
+        if (video.paused) {
+            video.play();
+            btnVideo.innerHTML = "Pause";
+        } else {
+            video.pause();
+            btnVideo.innerHTML = "Play";
+        }
+    };
+
+    //navigate to the previous image
+    previous.onclick = function () {
+        plusSlides(modalContainer, -1);
+    };
+    // navigate to the next image
+    next.onclick = function () {
+        plusSlides(modalContainer, 1);
+        console.log(slideIndex);
+    };
+                    </pre>
+
+                    <pre>
+// the variable to store the selected image
+    <span class="highlight">var slideIndex = 1;</span>
+
+    //The private methods for showing the modal and navigating the image gallery
+    function openModal(myModal) {
+        myModal.style.display = "block";        
+    }
+
+    function closeModal(myModal) {
+        myModal.style.display = "none";
+    }
+
+    function plusSlides(myModal, n) {
+        showSlides(myModal, slideIndex += n);
+    }
+
+    function currentSlide(myModal, n) {
+        showSlides(myModal, slideIndex = +n);
+    }
+
+    function showSlides(myModal, n) {
+        var i;
+        var slides = myModal.getElementsByClassName("mySlides");
+        var dots = myModal.getElementsByClassName("demo");
+        var captionText = myModal.getElementsByClassName("caption")[0];
+        if (n > slides.length) {
+            slideIndex = 1;
+        }
+        if (n < 1) {
+            slideIndex = slides.length;
+        }
+
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex - 1].style.display = "block";
+        dots[slideIndex - 1].className += " active";
+        captionText.innerHTML = dots[slideIndex - 1].alt;
+    }                        
+                    </pre>
+                    <li>A public method to set color for the text displaying on the VideoLightbox</li>
+                    <pre>
+videoContainer.setTextColor = function (color) {
+        var videoLigthbox = videoContainer.getElementsByClassName("videolightbox")[0];
+        videoLigthbox.style.color = color;
+    };
+                    </pre>                    
+                    <li>Using reasonable CSS: only add the class name when generating HTML elements, and then edit them in the separate <span class="highlight">videoLightbox.css</span> file</li>
+                    <pre>
+var video = document.createElement("video");
+    video.className = "myVideo";
+
+    var mainContent = document.createElement("div");
+    mainContent.className = "videolightbox";
+
+    var btnVideo = document.createElement("button");
+    btnVideo.className = "buttonVideo";
+
+    var modalContainer = document.createElement("div");
+    modalContainer.className = "modal";                      
+                    </pre>
+                </ul>
+            </div>
+        </div> <!-- end of  content -->
+
+        <div id="footer">
+            HONG TRAN
+        </div>
+
+    </body>
+</html>

@@ -1,0 +1,17 @@
+[
+    {
+        "ImageSmall": "pics/spring01_600x400.jpg",
+        "ImageWide": "pics/spring01_600x400.jpg",
+        "Alt": "The tulips"
+    },
+    {
+        "ImageSmall": "pics/spring02_600x400.jpg",
+        "ImageWide": "pics/spring02_600x400.jpg",
+        "Alt": "The chamomiles"
+    },
+    {
+        "ImageSmall": "pics/spring03_600x400.jpg",
+        "ImageWide": "pics/spring03_600x400.jpg",
+        "Alt": "The lavenders"
+    }  
+]

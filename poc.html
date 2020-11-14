@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<!--
+Tutorial Proposal
+Create a modal image gallery (lightbox) with video on the background.
+-->
+<html>
+    <head>
+        <title>Explore nature</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="css/lightbox.css" rel="stylesheet" type="text/css" />
+        <link href="css/video.css" rel="stylesheet" type="text/css" />
+        <link href="css/myTutorialStyle.css" rel="stylesheet" type="text/css" />
+
+        <link href="../style/commonStyle.css" rel="stylesheet" type="text/css" />
+        <link href="../style/myStyle.css" rel="stylesheet" type="text/css" />
+
+    </head>
+    
+    <body>        
+
+        <div id="titleNav">
+
+            <div id="pageTitle">
+                Nature Around Us
+            </div>
+        </div> <!-- end of  titleNav -->
+
+        <div class="mainContent">
+            <p>
+                Nature is the most beautiful and attractive surrounding around us which make us happy and provide us natural environment to live healthy. 
+                Our nature provides us variety of beautiful flowers, attractive birds, animals, green plants, blue sky, land, running rivers, sea, forests, air, mountains, valleys, hills and many more things. 
+                Our God has created a beautiful nature for the healthy living of us. All the things we use for our living are the assets of nature which we should not spoil and damage.
+            </p>        
+
+            <!--This is the first VideoLightbox component-->
+            <div class="videoDiv_1" id="firstVideoDiv">
+                <div class="videoBlock" id="videoBlock_1">
+                    <video id="myVideo_1" autoplay="autoplay" muted="muted" loop="loop">
+                        <source src="https://www.w3schools.com/howto/rain.mp4" type="video/mp4">
+                        Your browser does not support HTML5 video.
+                    </video>
+                    <div class="videoMessage" id="videoMessage_1">
+                        <h2>Video 1 on the background</h2>
+                        <p>Test displaying for the first Video</p>
+                        <button class="buttonVideo" id="myBtn_1" onclick="myFunction('myVideo_1', 'myBtn_1')">Pause</button>
+
+                        <div id="modalMessage_1">
+                            <h3>Modal Image Gallery 1</h3>
+                            <p>Show major images</p>
+                        </div><!--End for modal message of first Video-->
+
+                        <!--This is for Modal Image Gallery-->
+                        <div id="imageSet_1" class="row">
+                            <div class="column">
+                                <img src="https://www.w3schools.com/howto/img_nature.jpg" onclick="openModal('myModal_1');currentSlide(1)" class="hover-shadow cursor" alt="Nature and sunrise">
+                            </div>
+                            <div class="column">
+                                <img src="https://www.w3schools.com/howto/img_snow.jpg" onclick="openModal('myModal_1');currentSlide(2)" class="hover-shadow cursor" alt="Snow">
+                            </div>
+                            <div class="column">
+                                <img src="https://www.w3schools.com/howto/img_mountains.jpg" onclick="openModal('myModal_1');currentSlide(3)" class="hover-shadow cursor" alt="Mountains and fjords">
+                            </div>                
+                        </div>
+
+                        <div id="myModal_1" class="modal">
+                            <span class="close cursor" onclick="closeModal('myModal_1')">&times;</span>
+                            <div class="modal-content">
+
+                                <div class="mySlides">
+                                    <div class="numbertext">1 / 3</div>
+                                    <img src="https://www.w3schools.com/howto/img_nature_wide.jpg" alt="Nature and sunrise">
+                                </div>
+
+                                <div class="mySlides">
+                                    <div class="numbertext">2 / 3</div>
+                                    <img src="https://www.w3schools.com/howto/img_snow_wide.jpg" alt="Snow">
+                                </div>
+
+                                <div class="mySlides">
+                                    <div class="numbertext">3 / 3</div>
+                                    <img src="https://www.w3schools.com/howto/img_mountains_wide.jpg" alt="Mountains and fjords">
+                                </div>                    
+
+                                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                                <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+                                <div class="caption-container">
+                                    <p class="caption"></p>
+                                </div>
+
+                                <div class="column">
+                                    <img class="demo cursor" src="https://www.w3schools.com/howto/img_nature_wide.jpg" onclick="currentSlide(1)" alt="Nature and sunrise">
+                                </div>
+                                <div class="column">
+                                    <img class="demo cursor" src="https://www.w3schools.com/howto/img_snow_wide.jpg" onclick="currentSlide(2)" alt="Snow">
+                                </div>
+                                <div class="column">
+                                    <img class="demo cursor" src="https://www.w3schools.com/howto/img_mountains_wide.jpg" onclick="currentSlide(3)" alt="Mountains and fjords">
+                                </div>
+
+                            </div>
+                        </div>
+                        <!--End for Modal Image Gallery-->
+                    </div><!--End for videoMessage of the first Video-->
+                </div><!--End for videoBlock of the first Video-->
+
+            </div> <!--End for firstVideoDiv-->
+
+            <!--This is the second VideoLightbox component-->
+            <div class="videoDiv_2" id="secondVideoDiv">
+                <div class="videoBlock" id="videoBlock_2">
+                    <video id="myVideo_2" autoplay="autoplay" muted="muted" loop="loop">
+                        <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+                        Your browser does not support HTML5 video.
+                    </video>
+                    <div class="videoMessage" id="videoMessage_2">
+                        <h2>Video 2 on the background</h2>
+                        <p>Test displaying for the second Video</p>
+                        <button class="buttonVideo" id="myBtn_2" onclick="myFunction('myVideo_2', 'myBtn_2')">Pause</button>
+
+                        <div id="modalMessage_2">
+                            <h3>Modal Image Gallery 2</h3>
+                            <p>Show major images</p>
+                        </div><!--End for modal message of first Video-->
+
+                        <!--This is for Modal Image Gallery-->
+                        <div id="imageSet_2" class="row">
+                            <div class="column">
+                                <img src="https://www.w3schools.com/howto/img_lights.jpg" onclick="openModal('myModal_2');currentSlide(1)" class="hover-shadow cursor" alt="Northern Lights">
+                            </div>
+                            <div class="column">
+                                <img src="https://www.w3schools.com/howto/img_snow.jpg" onclick="openModal('myModal_2');currentSlide(2)" class="hover-shadow cursor" alt="Snow">
+                            </div>
+                            <div class="column">
+                                <img src="https://www.w3schools.com/howto/img_mountains.jpg" onclick="openModal('myModal_2');currentSlide(3)" class="hover-shadow cursor" alt="Mountains and fjords">
+                            </div>                
+                        </div>
+
+                        <div id="myModal_2" class="modal">
+                            <span class="close cursor" onclick="closeModal('myModal_2')">&times;</span>
+                            <div class="modal-content">
+
+                                <div class="mySlides">
+                                    <div class="numbertext">1 / 3</div>
+                                    <img src="https://www.w3schools.com/howto/img_lights_wide.jpg" alt="Northern Lights">
+                                </div>
+
+                                <div class="mySlides">
+                                    <div class="numbertext">2 / 3</div>
+                                    <img src="https://www.w3schools.com/howto/img_snow_wide.jpg" alt="Snow">
+                                </div>
+
+                                <div class="mySlides">
+                                    <div class="numbertext">3 / 3</div>
+                                    <img src="https://www.w3schools.com/howto/img_mountains_wide.jpg" alt="Mountains and fjords">
+                                </div>                    
+
+                                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                                <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+                                <div class="caption-container">
+                                    <p class="caption"></p>
+                                </div>
+
+                                <div class="column">
+                                    <img class="demo cursor" src="https://www.w3schools.com/howto/img_lights_wide.jpg" onclick="currentSlide(1)" alt="Northern Lights">
+                                </div>
+                                <div class="column">
+                                    <img class="demo cursor" src="https://www.w3schools.com/howto/img_snow_wide.jpg" onclick="currentSlide(2)" alt="Snow">
+                                </div>
+                                <div class="column">
+                                    <img class="demo cursor" src="https://www.w3schools.com/howto/img_mountains_wide.jpg" onclick="currentSlide(3)" alt="Mountains and fjords">
+                                </div>
+
+                            </div>
+                        </div>
+                        <!--End for Modal Image Gallery-->
+                    </div><!--End for videoMessage of the first Video-->
+                </div><!--End for videoBlock of the first Video-->
+
+            </div> <!--End for secondVideoDiv-->            
+            <div class="clear-both"></div>
+        </div> <!--End for the content of page-->        
+
+        <div id="footer">
+            HONG TRAN
+        </div>
+
+        <script>
+            "use strict";
+            var modal = "";
+            var slideIndex = 1;
+
+            //The script for lightbox
+            function openModal(myModal) {
+                document.getElementById(myModal).style.display = "block";
+                modal = myModal;
+                showSlides(slideIndex);
+                document.getElementById("footer").style.visibility = 'hidden';
+            }
+
+            function closeModal(myModal) {
+                document.getElementById(myModal).style.display = "none";
+                document.getElementById("footer").style.visibility = 'visible';
+            }
+
+            function plusSlides(n) {
+                showSlides(slideIndex += n);
+            }
+
+            function currentSlide(n) {
+                showSlides(slideIndex = n);
+            }
+
+            function showSlides(n) {
+                console.log(modal);
+
+                var i;
+                var slides = document.getElementById(modal).getElementsByClassName("mySlides");
+                var dots = document.getElementById(modal).getElementsByClassName("demo");
+                var captionText = document.getElementById(modal).getElementsByClassName("caption")[0];
+                if (n > slides.length) {
+                    slideIndex = 1;
+                }
+                if (n < 1) {
+                    slideIndex = slides.length;
+                }
+                for (i = 0; i < slides.length; i++) {
+                    slides[i].style.display = "none";
+                }
+                for (i = 0; i < dots.length; i++) {
+                    dots[i].className = dots[i].className.replace(" active", "");
+                }
+                slides[slideIndex - 1].style.display = "block";
+                dots[slideIndex - 1].className += " active";
+                captionText.innerHTML = dots[slideIndex - 1].alt;
+
+                console.log(n);
+                console.log(slides.length);
+                console.log(dots.length);
+            }
+
+            //The script for video            
+            // Pause and play the video, and change the button text
+            function myFunction(videoId, btnId) {
+                // Get the video
+                var video = document.getElementById(videoId);
+                // Get the button
+                var btn = document.getElementById(btnId);
+
+                if (video.paused) {
+                    video.play();
+                    btn.innerHTML = "Pause";
+                } else {
+                    video.pause();
+                    btn.innerHTML = "Play";
+                }
+            }
+        </script>
+    </body>
+</html>

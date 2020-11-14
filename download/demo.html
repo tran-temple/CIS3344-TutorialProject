@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<!--
+Tutorial Proposal
+Create a modal image gallery (lightbox) with video on the background.
+-->
+<html>
+    <head>
+        <title>Demo Component</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="videoLightbox.css" rel="stylesheet" type="text/css" />        
+
+    </head>
+    <body>
+        <div>
+            <p style="font-size: 18px; background-color: yellow;">
+                The idea is to create a component "VideoLightbox". It combines two effects: Video on the background and the lightbox (Modal Image Gallery). 
+                The HTML coders use this component when they would like to show a component that has a background video behind a lightbox.
+            </p>       
+            <br/>
+
+            <!--Show VideoLightbox components-->
+            
+            <!-- VideoLightbox 1-->
+            <div>
+                <div class="videolightboxContainer" id="VideoLightBox_1"></div>                    
+            </div><!--End for videoBlock of the first Video-->
+            
+            <!-- VideoLightbox 2-->
+            <div style="padding-left: 50%;">
+                <div class="videolightboxContainer" id="VideoLightBox_2"></div>                    
+            </div><!--End for videoBlock of the second Video-->            
+
+        </div> <!--End for the content of page-->        
+
+        <script src="MakeVideoLightBox.js"></script>
+
+        <script>
+            "use strict";
+
+            var video1 = MakeVideoLightBox({
+                id: "VideoLightBox_1",
+                jsonFile: "JSON/imageSet01.json",
+                videoFile: "https://www.w3schools.com/howto/rain.mp4",
+                videoType: "video/mp4",
+                videoTitle: "The Rainy Day!!!",
+                modalIntro: "Explore the lanscape: nature, snow and moutain.........."
+            });
+
+            video1.setTextColor("white");
+
+            var video2 = MakeVideoLightBox({
+                id: "VideoLightBox_2",
+                jsonFile: "JSON/imageSet02.json",
+                videoFile: "https://www.w3schools.com/html/mov_bbb.mp4",
+                videoType: "video/mp4",
+                videoTitle: "The flowers world: Longwood Garden!!!",
+                modalIntro: "The Longwood garden on Spring, it is amazing and interesting."
+            });
+            
+            video2.setTextColor("cyan");
+            
+        </script>
+
+    </body>
+</html>

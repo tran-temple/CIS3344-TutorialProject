@@ -1,0 +1,17 @@
+[
+    {
+        "ImageSmall": "https://www.w3schools.com/howto/img_nature.jpg",
+        "ImageWide": "https://www.w3schools.com/howto/img_nature_wide.jpg",
+        "Alt": "Nature and sunrise"
+    },
+    {
+        "ImageSmall": "https://www.w3schools.com/howto/img_snow.jpg",
+        "ImageWide": "https://www.w3schools.com/howto/img_snow_wide.jpg",
+        "Alt": "Snow"
+    },
+    {
+        "ImageSmall": "https://www.w3schools.com/howto/img_mountains.jpg",
+        "ImageWide": "https://www.w3schools.com/howto/img_mountains_wide.jpg",
+        "Alt": "Mountains and fjords"
+    }  
+]
